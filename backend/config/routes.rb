@@ -7,4 +7,39 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  namespace :api do
+    namespace :v1 do
+
+      # Expense routes
+
+      # CRUD routes for expenses
+      get '/expenses', to: 'expenses#index'
+      post '/expenses', to: 'expenses#create'
+      put '/expenses/:id', to: 'expenses#update'
+      delete '/expenses/:id', to: 'expenses#destroy'
+
+      # Gets all expenses for a specific date range
+      get '/expenses/date', to: 'expenses#date' 
+
+      # Category routes
+
+      # CRUD routes for categories
+      get '/categories', to: 'categories#index'
+      post '/categories', to: 'categories#create'
+      put '/categories/:id', to: 'categories#update'
+      delete '/categories/:id', to: 'categories#destroy'
+
+      # Gets all expenses with matching category_id
+      get 'categories/:id', to: 'categories#show' 
+
+      # Note routes
+
+      # CRUD routes for notes
+      get '/notes', to: 'notes#index'
+      post '/notes', to: 'notes#create'
+      put '/notes/:id', to: 'notes#update'
+      delete '/notes/:id', to: 'notes#destroy'
+    end
+  end
 end
