@@ -5,13 +5,16 @@ module Api
       # Calls set_expense before update and destroy actions
       before_action :set_expense, only: [:update, :destroy]
 
+      # GET api/v1/expenses
+      # Gets all expenses
       def index
         @expenses = Expense.all
         render json: @expenses
       end
 
+      # POST api/v1/expenses
+      # Creates a new expense
       def create
-        # Creates a new expense with the provided parameters
         @expense = Expense.new(expense_params)
 
         # Attempts to save the expense and returns whether it was successful
@@ -22,6 +25,8 @@ module Api
         end
       end
 
+      # PUT api/v1/expenses/:id
+      # Updates an existing expense by ID 
       def update
         # Updates the expense with the provided parameters and returns whether it was successful
         if @expense.update(expense_params)
@@ -32,13 +37,16 @@ module Api
 
       end
 
+      # DELETE api/v1/expenses/:id
+      # Deletes an expense by ID
       def destroy
-        # Deletes the expense by id
         @expense.destroy
       end
 
+      # GET api/v1/expenses/date
+      # Gets expenses within a specified date range
       def date
-        # Retrieves expenses within a specified date range
+        # Gets start_date and end_date from query parameters
         start_date = params[:start_date]
         end_date = params[:end_date]
 
@@ -46,8 +54,9 @@ module Api
         render json: @expenses
       end
 
+      # GET api/v1/expenses/category/:id
+      # Gets expenses by category ID 
       def category
-        # Retrieves expenses matching a specific category_id
         category_id = params[:id]
         @expenses = Expense.where(category_id: category_id)
         render json: @expenses
