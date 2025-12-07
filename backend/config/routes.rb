@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       # Gets all expenses for a specific date range
       get '/expenses/date', to: 'expenses#date' 
 
+      # Gets all expenses with matching category_id
+      get 'expenses/category/:id', to: 'expenses#category' 
+
       # Category routes
 
       # CRUD routes for categories
@@ -30,8 +33,6 @@ Rails.application.routes.draw do
       put '/categories/:id', to: 'categories#update'
       delete '/categories/:id', to: 'categories#destroy'
 
-      # Gets all expenses with matching category_id
-      get 'categories/:id', to: 'categories#show' 
 
       # Note routes
 
