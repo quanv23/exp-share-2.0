@@ -14,11 +14,15 @@
 
 /* Defining custom colours */
 @theme {
-	--color-myGray: #a5a5a5;
+	--color-myGray: #d9d9d9;
 	--color-myLightGray: #f5f5f5;
-	--color-myDarkGray: #d9d9d9;
+	--color-myDarkGray: #a5a5a5;
 	--color-myGreen: #33ba77;
+	--color-myHoverGreen: #2a9e64;
+	--color-myActiveGreen: #238553;
 	--color-myRed: #ff5757;
+	--color-myHoverWhite: #f3f4f6;
+	--color-myActiveWhite: #e5e7eb;
 }
 
 /* Defining custom theme */
@@ -36,4 +40,8 @@
 
 .input-field {
 	@apply h-[40px] bg-myLightGray rounded-lg px-4;
+}
+
+.long-green-btn {
+	@apply h-[40px] w-full rounded-lg bg-myGreen text-white hover:bg-myHoverGreen active:bg-myActiveGreen;
 }
