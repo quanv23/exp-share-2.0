@@ -4,11 +4,11 @@ import ModalHelper from '../components/ModalHelper';
 import SuccessDialog from '../components/SuccesDialog';
 import FailureDialog from '../components/ErrorDialog';
 import SelectCategory from '../components/SelectCategory';
-import type { Expense } from '../utils/types';
+import type { NewExpense } from '../utils/types';
 
 export default function Home() {
 	// State variable to hold new expense data
-	const [expense, setExpense] = useState<Expense>({
+	const [expense, setExpense] = useState<NewExpense>({
 		amount: '',
 		category_id: '',
 		title: '',
@@ -65,12 +65,28 @@ export default function Home() {
 
 			// Validate that all fields are filled out
 			for (const key in expense) {
-				if (expense[key as keyof Expense] === '') {
+				if (expense[key as keyof NewExpense] === '') {
 					throw new Error('All fields must be filled out');
 				}
 			}
 
-			const data = JSON.stringify({ expense });
+			// Attempts create a new expense in the backend
+			const res = await fetch('http://127.0.0.1:3000/api/v1/expenses', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ expense }),
+			});
+
+			if (!res.ok) throw new Error('Error submitting expense');
+
+			// Resets input fields
+			setExpense({
+				title: '',
+				amount: '',
+				category_id: '',
+			});
 
 			toggleSuccessModal();
 		} catch (error) {
@@ -91,7 +107,7 @@ export default function Home() {
 					<FailureDialog />
 				</ModalHelper>
 			)}
-			<div className="h-full bg-myGreen overflow-hidden">
+			<div className="h-screen bg-myGreen overflow-hidden pb-16">
 				<div className="centered-flex flex-col h-3/5 bg-myGreen text-white">
 					<HiOutlinePlusCircle size={175} />
 					<h1 className="font-bold text-4xl">Exp-Share</h1>

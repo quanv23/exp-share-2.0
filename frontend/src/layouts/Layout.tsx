@@ -9,9 +9,9 @@ import {
 
 export default function Layout() {
 	return (
-		<div className="h-screen flex flex-col pb-15">
+		<div>
 			<Outlet />
-			<footer className="h-[60px] centered-flex gap-10 p-4 w-screen fixed bottom-0 left-0 shadow-lg bg-white navbar-shadow">
+			<footer className="h-16 centered-flex gap-10 p-4 w-screen fixed bottom-0 left-0 shadow-lg bg-white navbar-shadow">
 				<NavLink
 					to="/"
 					className={({ isActive }) =>

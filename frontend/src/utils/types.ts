@@ -3,12 +3,23 @@
  */
 
 /**
- * Represents a newly created expense
+ * Represents a new expense to be added to the database
  */
-export interface Expense {
+export interface NewExpense {
 	amount: string;
 	category_id: string;
 	title: string;
+}
+
+/**
+ * Represents an expense
+ */
+export interface Expense {
+	id: number;
+	amount: number;
+	title: string;
+	date: string;
+	category: Category;
 }
 
 /**
@@ -18,6 +29,4 @@ export interface Category {
 	id: string;
 	name: string;
 	colour: string;
-	created_at: string;
-	updated_at: string;
 }

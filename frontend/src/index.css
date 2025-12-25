@@ -39,9 +39,9 @@
 }
 
 .input-field {
-	@apply h-[40px] bg-myLightGray rounded-lg px-4;
+	@apply h-10 bg-myLightGray rounded-lg px-4;
 }
 
 .long-green-btn {
-	@apply h-[40px] w-full rounded-lg bg-myGreen text-white hover:bg-myHoverGreen active:bg-myActiveGreen;
+	@apply h-10 w-full rounded-lg bg-myGreen text-white hover:bg-myHoverGreen active:bg-myActiveGreen;
 }
