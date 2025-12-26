@@ -15,21 +15,21 @@ Category.create!([
 ])
 
 Expense.create!([
-  { title: "Groceries", amount: 150, category_id: Category.find_by(name: "Food").id, date: Date.today - 2 },
-  { title: "Bus Ticket", amount: 50, category_id: Category.find_by(name: "Transport").id, date: Date.today - 10 },
-  { title: "Movie Night", amount: 80 , category_id: Category.find_by(name: "Entertainment").id, date: Date.today - 5 },
-  { title: "Lunch Out", amount: 18, category_id: Category.find_by(name: "Food").id, date: Date.today - 1 },
-  { title: "Taxi Ride", amount: 32, category_id: Category.find_by(name: "Transport").id, date: Date.today - 3 },
-  { title: "Snacks", amount: 7, category_id: Category.find_by(name: "Food").id, date: Date.today - 4 },
-  { title: "Metro Pass", amount: 12, category_id: Category.find_by(name: "Transport").id, date: Date.today - 8 },
-  { title: "Concert Ticket", amount: 120, category_id: Category.find_by(name: "Entertainment").id, date: Date.today - 15 },
-  { title: "Streaming Subscription", amount: 20, category_id: Category.find_by(name: "Entertainment").id, date: Date.today - 12 },
-  { title: "Coffee", amount: 6, category_id: Category.find_by(name: "Food").id, date: Date.today - 6 },
-  { title: "Bike Rental", amount: 9, category_id: Category.find_by(name: "Transport").id, date: Date.today - 9 },
-  { title: "Sandwich", amount: 10, category_id: Category.find_by(name: "Food").id, date: Date.today - 11 },
-  { title: "Arcade Games", amount: 25, category_id: Category.find_by(name: "Entertainment").id, date: Date.today - 13 },
-  { title: "Gas Refill", amount: 60, category_id: Category.find_by(name: "Transport").id, date: Date.today - 7 },
-  { title: "Board Game", amount: 45, category_id: Category.find_by(name: "Entertainment").id, date: Date.today - 14 },
+  { title: "Groceries", amount: 150, category_id: Category.find_by(name: "Food").id, date: Time.current - 2.days },
+  { title: "Bus Ticket", amount: 50, category_id: Category.find_by(name: "Transport").id, date: Time.current - 10.days },
+  { title: "Movie Night", amount: 80 , category_id: Category.find_by(name: "Entertainment").id, date: Time.current - 5.days },
+  { title: "Lunch Out", amount: 18, category_id: Category.find_by(name: "Food").id, date: Time.current - 1.days },
+  { title: "Taxi Ride", amount: 32, category_id: Category.find_by(name: "Transport").id, date: Time.current - 3.days },
+  { title: "Snacks", amount: 7, category_id: Category.find_by(name: "Food").id, date: Time.current - 4.days },
+  { title: "Metro Pass", amount: 12, category_id: Category.find_by(name: "Transport").id, date: Time.current - 8.days },
+  { title: "Concert Ticket", amount: 120, category_id: Category.find_by(name: "Entertainment").id, date: Time.current - 15.days },
+  { title: "Streaming Subscription", amount: 20, category_id: Category.find_by(name: "Entertainment").id, date: Time.current - 12.days },
+  { title: "Coffee", amount: 6, category_id: Category.find_by(name: "Food").id, date: Time.current - 6.days },
+  { title: "Bike Rental", amount: 9, category_id: Category.find_by(name: "Transport").id, date: Time.current - 9.days },
+  { title: "Sandwich", amount: 10, category_id: Category.find_by(name: "Food").id, date: Time.current - 11.days },
+  { title: "Arcade Games", amount: 25, category_id: Category.find_by(name: "Entertainment").id, date: Time.current - 3.days },
+  { title: "Gas Refill", amount: 60, category_id: Category.find_by(name: "Transport").id, date: Time.current - 7.days },
+  { title: "Board Game", amount: 45, category_id: Category.find_by(name: "Entertainment").id, date: Time.current - 14.days },
   { title: "Breakfast", amount: 9, category_id: Category.find_by(name: "Food").id, date: Date.today - 16 }
 ])
 

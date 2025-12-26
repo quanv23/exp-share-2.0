@@ -8,8 +8,8 @@ module Api
       # GET api/v1/expenses
       # Gets all expenses
       def index
-        @expenses = Expense.all
-        render json: @expenses
+        @expenses = Expense.includes(:category).order(date: :desc)
+        render json: @expenses, include: :category
       end
 
       # POST api/v1/expenses
