@@ -59,7 +59,7 @@ export default function SelectCategory(props: Props) {
 
 	return (
 		<select
-			className={`input-field ${width}`}
+			className={`${width} h-10 bg-myLightGray rounded-lg px-3`}
 			value={value}
 			onChange={onChange}
 		>

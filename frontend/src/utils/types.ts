@@ -12,6 +12,16 @@ export interface NewExpense {
 }
 
 /**
+ * Represents the data required to update an expense
+ */
+export interface EditExpense {
+	id: number;
+	amount: number;
+	category_id: string;
+	title: string;
+	date: string;
+}
+/**
  * Represents an expense
  */
 export interface Expense {
@@ -20,6 +30,7 @@ export interface Expense {
 	title: string;
 	date: string;
 	category: Category;
+	category_id: number;
 }
 
 /**

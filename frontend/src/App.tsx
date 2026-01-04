@@ -6,6 +6,7 @@ import Category from './pages/Category';
 import Expenses from './pages/Expenses';
 import Notes from './pages/Notes';
 import Layout from './layouts/Layout';
+import 'react-day-picker/style.css';
 
 export default function App() {
 	return (

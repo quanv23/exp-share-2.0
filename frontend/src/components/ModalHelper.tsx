@@ -5,6 +5,7 @@
  * 		It accepts children elements to be displayed within the modal and provides an onClose handler to close the modal when the overlay is clicked.
  * </Description>
  */
+import { useEffect } from 'react';
 
 /**
  * Represents the properties of the Modal component
