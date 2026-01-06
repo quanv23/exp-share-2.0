@@ -6,15 +6,12 @@
  * </Description>
  */
 import { useEffect } from 'react';
+import { lockScroll, unlockScroll } from '../utils/scrollLock';
 
 /**
  * Represents the properties of the Modal component
  */
 export interface Props {
-	/**
-	 * Determines whether to display the modal or not
-	 */
-	isOpen: boolean;
 	/**
 	 * Click event handler that closes the modal
 	 */
@@ -26,10 +23,17 @@ export interface Props {
 }
 
 export default function ModalHelper(props: Props) {
-	const { isOpen, onClose, children } = props;
+	const { onClose, children } = props;
 
-	// Return nothing if modal is not open
-	if (!isOpen) return null;
+	// Prevent background scrolling when the modal is open
+	useEffect(() => {
+		lockScroll();
+
+		// Cleanup function to restore scrolling when the modal is closed
+		return () => {
+			unlockScroll();
+		};
+	}, []);
 
 	return (
 		<div

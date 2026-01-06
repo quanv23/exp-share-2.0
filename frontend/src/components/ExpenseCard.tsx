@@ -181,69 +181,72 @@ export default function ExpenseCard(props: Props) {
 
 	return (
 		<>
-			<ModalHelper isOpen={isOpen} onClose={toggleModal}>
-				<div className="flex flex-col gap-4">
-					<form onSubmit={handleEditFormSubmit} className="edit-modal">
-						<h1 className="font-bold mb-4">Edit Expense</h1>
-						<input
-							type="text"
-							name="title"
-							value={expense.title}
-							placeholder="Title"
-							className="input-field w-full"
-							onChange={handleInputChange}
-						/>
-						<input
-							type="text"
-							name="amount"
-							value={expense.amount}
-							placeholder="Amount"
-							className="input-field w-full"
-							onChange={handleInputChange}
-						/>
-						<SelectCategory
-							value={expense.category_id}
-							width="w-full"
-							onChange={handleSelectChange}
-						/>
-						<button
-							type="button"
-							className="h-10 bg-myLightGray rounded-lg px-4 w-full text-left"
-							onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
-						>
-							{expense.date === '' ? 'Select Date' : formatDate(expense.date)}
-						</button>
-						<button type="submit" className="long-green-btn">
-							Edit
-						</button>
-					</form>
-					<form onSubmit={handleDeleteFormSubmit} className="edit-modal">
-						{deleteConfirmation ? (
-							<div className="centered-flex w-full">
-								<button type="button" onClick={toggleDelete} className="w-1/2">
-									Cancel
-								</button>
-								<button type="submit" className="red-btn w-1/2">
-									Confirm
-								</button>
-							</div>
-						) : (
+			{isOpen && (
+				<ModalHelper onClose={toggleModal}>
+					<div className="flex flex-col gap-4">
+						<form onSubmit={handleEditFormSubmit} className="edit-modal">
+							<h1 className="font-bold mb-4">Edit Expense</h1>
+							<input
+								type="text"
+								name="title"
+								value={expense.title}
+								placeholder="Title"
+								className="input-field w-full"
+								onChange={handleInputChange}
+							/>
+							<input
+								type="text"
+								name="amount"
+								value={expense.amount}
+								placeholder="Amount"
+								className="input-field w-full"
+								onChange={handleInputChange}
+							/>
+							<SelectCategory
+								value={expense.category_id}
+								width="w-full"
+								onChange={handleSelectChange}
+							/>
 							<button
 								type="button"
-								onClick={toggleDelete}
-								className="red-btn w-full"
+								className="h-10 bg-myLightGray rounded-lg px-4 w-full text-left"
+								onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
 							>
-								Delete
+								{expense.date === '' ? 'Select Date' : formatDate(expense.date)}
 							</button>
-						)}
-					</form>
-				</div>
-			</ModalHelper>
+							<button type="submit" className="long-green-btn">
+								Edit
+							</button>
+						</form>
+						<form onSubmit={handleDeleteFormSubmit} className="edit-modal">
+							{deleteConfirmation ? (
+								<div className="centered-flex w-full">
+									<button
+										type="button"
+										onClick={toggleDelete}
+										className="w-1/2"
+									>
+										Cancel
+									</button>
+									<button type="submit" className="red-btn w-1/2">
+										Confirm
+									</button>
+								</div>
+							) : (
+								<button
+									type="button"
+									onClick={toggleDelete}
+									className="red-btn w-full"
+								>
+									Delete
+								</button>
+							)}
+						</form>
+					</div>
+				</ModalHelper>
+			)}
 			{isDatePickerOpen && (
-				<ModalHelper
-					isOpen={isDatePickerOpen}
-					onClose={() => setIsDatePickerOpen(false)}
-				>
+				<ModalHelper onClose={() => setIsDatePickerOpen(false)}>
 					<div className="flex flex-col items-center shadow-md rounded-xl bg-white p-6 gap-4;">
 						<DayPicker
 							mode="single"
@@ -254,12 +257,12 @@ export default function ExpenseCard(props: Props) {
 				</ModalHelper>
 			)}
 			{showSuccess && (
-				<ModalHelper isOpen={showSuccess} onClose={toggleSuccessModal}>
+				<ModalHelper onClose={toggleSuccessModal}>
 					<SuccessDialog />
 				</ModalHelper>
 			)}
 			{showError && (
-				<ModalHelper isOpen={showError} onClose={toggleErrorModal}>
+				<ModalHelper onClose={toggleErrorModal}>
 					<FailureDialog />
 				</ModalHelper>
 			)}
