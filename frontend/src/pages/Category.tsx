@@ -1,3 +1,7 @@
+/**
+ * Summary:
+ *   A page that displays a single category's details and allows for editing/deleting of the category
+ */
 export default function Category() {
 	return (
 		<div className="h-full bg-myGreen">
@@ -8,7 +12,6 @@ export default function Category() {
 				</div>
 			</div>
 			<div className="flex flex-col items-center gap-4 h-17/20 bg-white p-8 rounded-t-4xl">
-				<div>Expense Card</div>
 				<p className="text-myDarkGray text-sm">Displaying X of Y</p>
 				<button className="long-green-btn">Load More</button>
 			</div>

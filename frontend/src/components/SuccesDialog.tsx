@@ -1,5 +1,6 @@
 /**
- * <Summary> A react component that's used to display successful actions
+ * Summary:
+ *   A react component that's used to display successful actions typically used in tandem with the modal
  */
 
 import { HiOutlineCheckCircle } from 'react-icons/hi2';

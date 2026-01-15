@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import type { Expense } from '../utils/types';
 import ExpenseCard from '../components/ExpenseCard';
 
+/**
+ * Summary:
+ *   A page that displays all expenses and allows for editing/deletion of expenses
+ */
 export default function Expenses() {
 	// State variable to hold all expenses from the backend
 	const [expenses, setExpenses] = useState<Expense[]>([]);
@@ -24,6 +28,7 @@ export default function Expenses() {
 			setExpenses(data);
 		} catch (error) {
 			console.error('Error fetching expenses:', error);
+			throw new Error('Failed to fetch expenses');
 		}
 	}
 

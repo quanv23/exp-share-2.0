@@ -1,27 +1,25 @@
-/**
- * <Summary> A helper modal component that displays content on top of the current page
- * <Description>
- * 		This component renders a modal overlay that can be toggled on and off.
- * 		It accepts children elements to be displayed within the modal and provides an onClose handler to close the modal when the overlay is clicked.
- * </Description>
- */
 import { useEffect } from 'react';
 import { lockScroll, unlockScroll } from '../utils/scrollLock';
 
-/**
- * Represents the properties of the Modal component
- */
 export interface Props {
 	/**
 	 * Click event handler that closes the modal
 	 */
 	onClose: () => void;
 	/**
-	 * The content to be displyed on top
+	 * The content to be displyed
 	 */
 	children: React.ReactNode;
 }
 
+/**
+ * Summary:
+ *   A helper modal component that displays content on top of the current page and blurs the background
+ *
+ * Description:
+ *   This component renders a modal overlay that can be toggled on and off and prevents background scrolling when active.
+ * 	 It accepts children elements to be displayed within the modal
+ */
 export default function ModalHelper(props: Props) {
 	const { onClose, children } = props;
 

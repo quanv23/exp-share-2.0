@@ -6,6 +6,10 @@ import FailureDialog from '../components/ErrorDialog';
 import SelectCategory from '../components/SelectCategory';
 import type { NewExpense } from '../utils/types';
 
+/**
+ * Summary:
+ *   The home page that allows users to add expenses
+ */
 export default function Home() {
 	// State variable to hold new expense data
 	const [expense, setExpense] = useState<NewExpense>({
@@ -98,12 +102,12 @@ export default function Home() {
 	return (
 		<>
 			{showSuccess && (
-				<ModalHelper isOpen={showSuccess} onClose={toggleSuccessModal}>
+				<ModalHelper onClose={toggleSuccessModal}>
 					<SuccessDialog />
 				</ModalHelper>
 			)}
 			{showError && (
-				<ModalHelper isOpen={showError} onClose={toggleErrorModal}>
+				<ModalHelper onClose={toggleErrorModal}>
 					<FailureDialog />
 				</ModalHelper>
 			)}

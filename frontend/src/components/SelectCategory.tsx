@@ -1,10 +1,3 @@
-/**
- * <Summary> A reusable select dropdown component for selecting a category </Summary>
- * <Description>
- * 		Fetches the categories from the backend and displays them in a dropdown select input.
- * 		It accepts props for the selected value, and an onChange handler to update the parent component's state when a new category is selected.
- * </Description>
- */
 import { useState, useEffect } from 'react';
 import type { Category } from '../utils/types';
 
@@ -23,6 +16,13 @@ interface Props {
 	onChange: (value: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
+/**
+ * Summary:
+ *   A reusable select dropdown component for selecting a category
+ *
+ * Description:
+ *   Fetches the categories from the backend and displays them in a dropdown select input.
+ */
 export default function SelectCategory(props: Props) {
 	const { value, width, onChange } = props;
 

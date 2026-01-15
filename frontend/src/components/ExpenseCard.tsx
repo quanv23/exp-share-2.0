@@ -1,9 +1,3 @@
-/**
- * <Summary> A card component to display the details of an expense</Summary>
- * <Description>
- *      Display card information as well as the ability to edit, and delete the expense when clicked
- * </Description>
- */
 import { formatAmount, formatDate } from '../utils/functions';
 import { useState } from 'react';
 import ModalHelper from './ModalHelper';
@@ -24,20 +18,25 @@ interface Props {
 	fetchExpenses: () => Promise<void>;
 }
 
+/**
+ * Summary:
+ *   A card component to display the details of an expense
+ *
+ * Description:
+ *      Displays expense information as well as the ability to edit, and delete the expense when clicked
+ */
 export default function ExpenseCard(props: Props) {
 	const { displayExpense, fetchExpenses } = props;
 
-	// State variables to control the display of success and error modals
+	// State variables to control the display of modals
 	const [showError, setShowError] = useState<boolean>(false);
 	const [showSuccess, setShowSuccess] = useState<boolean>(false);
+	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	// State that determines whether to toggle delete confirmation
 	const [deleteConfirmation, setDeleteConfirmation] = useState<boolean>(false);
 
-	// State that determines whether to display the edit modal
-	const [isOpen, setIsOpen] = useState<boolean>(false);
-
-	// State that manage the date picker
+	// State that manages the date picker
 	const [isDatePickerOpen, setIsDatePickerOpen] = useState<boolean>(false);
 
 	// State that manages the data to be submitted when editting the expense
@@ -50,39 +49,47 @@ export default function ExpenseCard(props: Props) {
 	});
 
 	// State that manages the selected date from the date picker
-	// NOTE: This is separate from the expense state to avoid typing issues due to DatePicker returning a date object, while the expense date is a string
+	// NOTE: This is separate from the expense state to avoid typing issues due to DatePicker returning a date object, while the type of expense date is a string
 	const [selectedDate, setSelectedDate] = useState<Date>();
 
 	/**
-	 * Toggles the edit modal to be displayed
+	 * Summary:
+	 *   Toggles the edit modal to be displayed
 	 */
 	function toggleModal(): void {
 		setIsOpen(!isOpen);
 	}
 
 	/**
-	 * Toggles the confrimation for deletion to be displayed
+	 * Summary:
+	 *   Toggles the confrimation for deletion to be displayed
 	 */
 	function toggleDelete(): void {
 		setDeleteConfirmation(!deleteConfirmation);
 	}
 
 	/**
-	 * Toggles the success modal to be displayed
+	 * Summary:
+	 *   Toggles the success modal to be displayed
 	 */
 	function toggleSuccessModal(): void {
 		setShowSuccess(!showSuccess);
 	}
 
 	/**
-	 * Toggles the error modal to be displayed
+	 * Summary:
+	 *   Toggles the error modal to be displayed
 	 */
 	function toggleErrorModal(): void {
 		setShowError(!showError);
 	}
 
 	/**
-	 * Handles when a date from DayPicker is selected
+	 * Summary:
+	 *   Handles when a date from DayPicker is selected
+	 *
+	 * Parameter: date
+	 *   The date selected from the date picker
 	 */
 	function handleDayPickerSelect(date: Date | undefined): void {
 		if (!date) return;
@@ -97,7 +104,8 @@ export default function ExpenseCard(props: Props) {
 	}
 
 	/**
-	 * Handles when an input in the form is changed and updates the state with the corresponding name of the input element
+	 * Summary:
+	 *   Handles when an input in the form is changed and updates the state with the corresponding name of the input element
 	 */
 	function handleInputChange(event: React.ChangeEvent<HTMLInputElement>): void {
 		setExpense({
@@ -107,7 +115,8 @@ export default function ExpenseCard(props: Props) {
 	}
 
 	/**
-	 * Handles when a new category is selected
+	 * Summary:
+	 *   Handles when a new category is selected and updates the expense state
 	 */
 	function handleSelectChange(
 		event: React.ChangeEvent<HTMLSelectElement>
@@ -119,7 +128,8 @@ export default function ExpenseCard(props: Props) {
 	}
 
 	/**
-	 * Handles when a form is submitted and deletes the expense
+	 * Summary:
+	 *   Handles when a form is submitted and deletes the expense
 	 */
 	async function handleDeleteFormSubmit(event: React.FormEvent): Promise<void> {
 		event.preventDefault();
@@ -145,7 +155,11 @@ export default function ExpenseCard(props: Props) {
 	}
 
 	/**
-	 * Handles when a form is submitted and updates an expense
+	 * Summary:
+	 *   Handles when a form is submitted and updates an expense
+	 *
+	 * Parameter: event
+	 *   The form submission event
 	 */
 	async function handleEditFormSubmit(event: React.FormEvent): Promise<void> {
 		event.preventDefault();
@@ -172,7 +186,7 @@ export default function ExpenseCard(props: Props) {
 
 			toggleModal(); // Closes edit modal
 			toggleSuccessModal(); // Shows success modal
-			fetchExpenses(); // Refreshes expenses list
+			fetchExpenses(); // Refreshes list of expenses
 		} catch (error) {
 			console.error('Error editting expense: ', error);
 			toggleErrorModal();

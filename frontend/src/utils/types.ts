@@ -1,5 +1,6 @@
 /**
- * <Summary> This file contains global type definitions used across the frontend application
+ * Summary:
+ *   This file contains global type definitions used across the frontend application
  */
 
 /**
@@ -40,4 +41,11 @@ export interface Category {
 	id: string;
 	name: string;
 	colour: string;
+}
+
+/**
+ * Represents a category with its expenses
+ */
+export interface CategoryWithExpenses extends Category {
+	expenses: Expense[];
 }
